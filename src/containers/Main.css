@@ -1,0 +1,21 @@
+a {
+  text-decoration: none;
+  color: #3f51b5;
+}
+
+.SearchForm {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.SearchForm button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.SearchForm fieldset {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}

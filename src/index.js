@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import * as serviceWorker from "./serviceWorker";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 import "./index.css";
 import Main from "./containers/Main";
@@ -12,7 +13,9 @@ const store = createStore(reducer);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Main />
+    <CssBaseline>
+      <Main />
+    </CssBaseline>
   </Provider>,
   document.getElementById("root")
 );

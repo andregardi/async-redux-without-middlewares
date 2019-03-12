@@ -1,4 +1,4 @@
-import reposService from "../services/repos";
+import Axios from "axios";
 
 export const REPO_REQUEST = "REPO_REQUEST";
 export const REPO_SUCCESS = "REPO_SUCCESS";
@@ -7,7 +7,9 @@ export const REPO_FAILURE = "REPO_FAILURE";
 export const getReposByUsername = async (dispatch, username) => {
   dispatch({ type: REPO_REQUEST });
   try {
-    const response = await reposService.getResposByUserName(username);
+    const response = await Axios.get(
+      `https://api.github.com/users/${username}/repos`
+    );
     dispatch({
       type: REPO_SUCCESS,
       repos: response.data
