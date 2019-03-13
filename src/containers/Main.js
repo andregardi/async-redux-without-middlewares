@@ -1,46 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import AppBar from "@material-ui/core/AppBar";
 import Card from "@material-ui/core/Card";
-import { CardContent, Avatar } from "@material-ui/core";
+import { CardContent, Avatar, IconButton } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
 
 import {
-  getReposByUsername,
-  REPO_FAILURE,
-  REPO_REQUEST,
-  REPO_SUCCESS
+  getReposByUsernameInjector,
+  REPOS_ERROR,
+  REPOS_REQUEST,
+  REPOS_SUCCESS,
+  REPOS_NOT_FOUND
 } from "../actions/repos";
 
-import "./Main.css";
+import "../index.css";
+import MessagePage from "../components/MessagePage";
 
 const User = props => {
   const { repos } = props;
-  const { avatar_url, login, url } = repos[0].owner;
+  const { avatar_url, login, html_url } = repos[0].owner;
   const reposCount = `${repos.length} repositories`;
   return (
     <div style={{ width: "100%", textAlign: "center" }}>
-      <Card
-        style={{
-          width: "100%",
-          marginBottom: "10px",
-          display: "flex",
-          alignItems: "center"
-        }}
-      >
-        <Avatar
-          alt="a"
-          src={avatar_url}
-          style={{
-            height: "80px",
-            width: "80px",
-            margin: "10px"
-          }}
-        />
+      <Card className="UserCard">
+        <Avatar className="Avatar" alt="a" src={avatar_url} />
         <div style={{ flex: 1 }}>
-          <a href={url} target="_blank" rel="noopener noreferrer">
+          <a href={html_url} target="_blank" rel="noopener noreferrer">
             <h2 style={{ margin: 0 }}>{login}</h2>
           </a>
           <p style={{ margin: 0 }}>{reposCount}</p>
@@ -92,28 +79,22 @@ function Main(props) {
         position="static"
         style={{
           marginBottom: "20px"
-          // background: "#fff"
         }}
       >
         <form className="SearchForm" searchForm="" onSubmit={formSubmit}>
-          <div style={{ margin: "0", flex: "1", textAlign: "left" }}>
-            <h3>
-              Asynchronous Redux
-              <br />
-              Without Middlewares
-            </h3>
+          <div style={{ margin: "0", flex: "2", textAlign: "left" }}>
+            <h3>Asynchronous Redux Without Middlewares</h3>
           </div>
           <div style={{ display: "flex", flex: "1", textAlign: "rigth" }}>
             <TextField
               name="username"
-              label="Search repos by username"
-              // placeholder="Search repos by username..."
+              placeholder="Search repos by username..."
               variant="outlined"
               autoComplete="off"
             />
-            <Button type="submit" variant="contained" color="primary">
-              Search
-            </Button>
+            <IconButton type="submit" aria-label="Search">
+              <SearchIcon />
+            </IconButton>
           </div>
         </form>
       </AppBar>
@@ -127,23 +108,51 @@ function Main(props) {
           justifContent: "space-between"
         }}
       >
-        {status === null && <h1>Select an user</h1>}
-        {status === REPO_REQUEST && <h1>Loading</h1>}
-        {status === REPO_SUCCESS && (
-          <>
-            {<User repos={repos} />}
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                marginLeft: "-5px"
-              }}
-            >
-              {repos.map(mapRepos)}
-            </div>
-          </>
+        {status === null && (
+          <MessagePage
+            image="git"
+            title="No user selected"
+            text="Please, select a GitHub user on the bar to see his or her repositories"
+          />
         )}
-        {status === REPO_FAILURE && <h1>Error</h1>}
+        {status === REPOS_REQUEST && (
+          <MessagePage image="spinner" title="Loading..." text="" />
+        )}
+        {status === REPOS_ERROR && (
+          <MessagePage
+            image="error"
+            title="Something went wrong"
+            text="Please, check your internet connection and try again"
+          />
+        )}
+        {status === REPOS_NOT_FOUND && (
+          <MessagePage
+            image="404"
+            title="User not found"
+            text="Please, try another username"
+          />
+        )}
+        {status === REPOS_SUCCESS &&
+          (repos.length === 0 ? (
+            <MessagePage
+              image="empty"
+              title="No Repositories"
+              text="We found the user that you are looking for, but he or she has no repositories"
+            />
+          ) : (
+            <>
+              {<User repos={repos} />}
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  marginLeft: "-5px"
+                }}
+              >
+                {repos.map(mapRepos)}
+              </div>
+            </>
+          ))}
       </div>
     </>
   );
@@ -160,7 +169,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   actions: {
-    getReposByUsername: getReposByUsername.bind(null, dispatch)
+    getReposByUsername: getReposByUsernameInjector(dispatch)
   }
 });
 

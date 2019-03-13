@@ -1,4 +1,9 @@
-import { REPO_REQUEST, REPO_SUCCESS, REPO_FAILURE } from "../actions/repos";
+import {
+  REPOS_REQUEST,
+  REPOS_SUCCESS,
+  REPOS_ERROR,
+  REPOS_NOT_FOUND
+} from "../actions/repos";
 
 const initialState = {
   repos: [],
@@ -7,13 +12,15 @@ const initialState = {
 
 export default function repos(state = initialState, action) {
   switch (action.type) {
-    case REPO_REQUEST:
-      return { ...state, status: REPO_REQUEST };
-    case REPO_SUCCESS:
+    case REPOS_REQUEST:
+      return { ...state, status: REPOS_REQUEST };
+    case REPOS_SUCCESS:
       const { repos } = action;
-      return { ...state, repos, status: REPO_SUCCESS };
-    case REPO_FAILURE:
-      return { ...state, status: REPO_FAILURE };
+      return { ...state, repos, status: REPOS_SUCCESS };
+    case REPOS_ERROR:
+      return { ...state, status: REPOS_ERROR };
+    case REPOS_NOT_FOUND:
+      return { ...state, status: REPOS_NOT_FOUND };
     default:
       return state;
   }

@@ -1,20 +1,27 @@
-import Axios from "axios";
+import reposService from "../services/repos";
 
-export const REPO_REQUEST = "REPO_REQUEST";
-export const REPO_SUCCESS = "REPO_SUCCESS";
-export const REPO_FAILURE = "REPO_FAILURE";
+export const REPOS_REQUEST = "REPOS_REQUEST";
+export const REPOS_SUCCESS = "REPOS_SUCCESS";
+export const REPOS_ERROR = "REPOS_ERROR";
+export const REPOS_NOT_FOUND = "REPOS_NOT_FOUND";
 
-export const getReposByUsername = async (dispatch, username) => {
-  dispatch({ type: REPO_REQUEST });
+const getReposByUsername = async (dispatch, reposService, username) => {
+  dispatch({ type: REPOS_REQUEST });
   try {
-    const response = await Axios.get(
-      `https://api.github.com/users/${username}/repos`
-    );
+    const response = await reposService.getResposByUserName(username);
     dispatch({
-      type: REPO_SUCCESS,
+      type: REPOS_SUCCESS,
       repos: response.data
     });
   } catch (error) {
-    dispatch({ type: REPO_FAILURE });
+    if (error.response && error.response.status === 404)
+      dispatch({ type: REPOS_NOT_FOUND });
+    else dispatch({ type: REPOS_ERROR });
   }
+};
+
+export const getReposByUsernameInjector = dispatch => {
+  return username => {
+    getReposByUsername(dispatch, reposService, username);
+  };
 };
