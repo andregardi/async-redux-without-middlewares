@@ -4,10 +4,24 @@ a {
 }
 
 .SearchForm {
+  width: 100%;
+  max-width: 970px;
+  margin: auto;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.SearchForm div {
+  flex: 1;
+}
+
+.SearchForm h3 {
+  text-align: center;
+  width: fit-content;
+  margin: 0;
 }
 
 .SearchForm button {

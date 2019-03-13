@@ -91,20 +91,28 @@ function Main(props) {
       <AppBar
         position="static"
         style={{
-          marginBottom: "20px",
-          background: "#fff"
+          marginBottom: "20px"
+          // background: "#fff"
         }}
       >
         <form className="SearchForm" searchForm="" onSubmit={formSubmit}>
-          <TextField
-            name="username"
-            label="Search repos by username"
-            variant="outlined"
-            autoComplete="off"
-          />
-          <Button type="submit" variant="contained" color="primary">
-            Search
-          </Button>
+          <div style={{ margin: "0", flex: "1", textAlign: "left" }}>
+            <h3>
+              Asynchronous Redux<br />
+              Without Middlewares
+            </h3>
+          </div>
+          <div style={{ flex: "1", textAlign: "rigth" }}>
+            <TextField
+              name="username"
+              label="Search repos by username"
+              variant="outlined"
+              autoComplete="off"
+            />
+            <Button type="submit" variant="contained" color="primary">
+              Search
+            </Button>
+          </div>
         </form>
       </AppBar>
       <div
