@@ -27,9 +27,30 @@ a {
 .SearchForm button {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  border-bottom-color: #ccc;
+  border-left: none;
+  /* background: #4f61a5; */
 }
 
 .SearchForm fieldset {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+  border-bottom-color: #ccc;
+  border-right: none;
+}
+
+.SearchForm fieldset:focus-within {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-color: #ccc;
+  border-right: none;
+}
+
+.SearchForm fieldset:focus {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.SearchForm input {
+  color: #fff;
+  /* background: #4f61a5; */
 }

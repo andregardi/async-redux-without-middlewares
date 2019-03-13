@@ -98,14 +98,16 @@ function Main(props) {
         <form className="SearchForm" searchForm="" onSubmit={formSubmit}>
           <div style={{ margin: "0", flex: "1", textAlign: "left" }}>
             <h3>
-              Asynchronous Redux<br />
+              Asynchronous Redux
+              <br />
               Without Middlewares
             </h3>
           </div>
-          <div style={{ flex: "1", textAlign: "rigth" }}>
+          <div style={{ display: "flex", flex: "1", textAlign: "rigth" }}>
             <TextField
               name="username"
               label="Search repos by username"
+              // placeholder="Search repos by username..."
               variant="outlined"
               autoComplete="off"
             />
