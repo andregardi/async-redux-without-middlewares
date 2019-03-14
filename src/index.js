@@ -6,7 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 import "./index.css";
-import Main from "./containers/Main";
+import ConnectedMain from "./containers/ConnectedMain";
 import reducer from "./reducers";
 
 const store = createStore(reducer);
@@ -14,7 +14,7 @@ const store = createStore(reducer);
 ReactDOM.render(
   <Provider store={store}>
     <CssBaseline>
-      <Main />
+      <ConnectedMain />
     </CssBaseline>
   </Provider>,
   document.getElementById("root")

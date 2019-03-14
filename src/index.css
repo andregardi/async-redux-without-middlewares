@@ -1,17 +1,15 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #f6f8fa;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
 }
 
 a {
@@ -19,7 +17,11 @@ a {
   color: #3f51b5;
 }
 
-.SearchForm {
+.nav-bar {
+  margin-bottom: 20px;
+}
+
+.search-form {
   width: 100%;
   max-width: 970px;
   margin: auto;
@@ -28,72 +30,109 @@ a {
   align-items: center;
 }
 
-.SearchForm div {
+.search-form div {
   flex: 1;
 }
 
-.SearchForm h3 {
+.search-form h3 {
   text-align: center;
   width: fit-content;
   margin: 0;
 }
 
-.SearchForm button {
+.search-form button {
   border-radius: 0;
   border-left: none;
   background: #5f71b5;
   color: #fff;
 }
 
-.SearchForm button:hover {
+.search-form button:hover {
   background: #6f81c5;
 }
 
-.SearchForm fieldset {
+.search-form fieldset {
   border: none;
 }
 
-.SearchForm fieldset:focus-within {
+.search-form fieldset:focus-within {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom-color: #ccc;
   border-right: none;
 }
 
-.SearchForm fieldset:focus {
+.search-form fieldset:focus {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.SearchForm input {
+.search-form input {
   color: #fff;
   background: #5f71b5;
 }
 
-.MessageContainer {
+.message-container {
   width: 100%;
   text-align: center;
   color: rgba(0, 0, 0, 0.76);
   margin-top: 100px;
 }
 
-.MessageContainer * {
+.message-container * {
   color: rgba(0, 0, 0, 0.76);
 }
 
-.MessageContainer img {
+.message-container img {
   max-height: 25vh;
   color: rgba(0, 0, 0, 0.76);
 }
 
-.UserCard {
+.container {
+  margin-top: 10px;
+  display: flex;
+  max-width: 970px;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.repos-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -5px;
+}
+
+.repo-card {
+  min-width: 300px;
+  max-width: 100%;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  flex: 1;
+}
+
+.user-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.user-card {
   width: 100%;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
 }
 
-.UserCard .Avatar {
+.user-card .avatar {
   height: 80px;
   width: 80px;
   margin: 10px;
+}
+
+.user-card div:nth-child(2) {
+  flex: 1;
+}
+
+.user-card h2,
+p {
+  margin: 0;
 }

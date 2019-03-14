@@ -1,21 +1,29 @@
 import reposService from "../services/repos";
-
-export const REPOS_REQUEST = "REPOS_REQUEST";
-export const REPOS_SUCCESS = "REPOS_SUCCESS";
-export const REPOS_ERROR = "REPOS_ERROR";
-export const REPOS_NOT_FOUND = "REPOS_NOT_FOUND";
+import {
+  REPOS_REQUEST,
+  REPOS_EMPTY,
+  REPOS_SUCCESS,
+  REPOS_NOT_FOUND,
+  REPOS_ERROR
+} from "../constants/ActionTypes";
 
 const getReposByUsername = async (dispatch, reposService, username) => {
+  //Set the applications to a "Loading" state
   dispatch({ type: REPOS_REQUEST });
+
   try {
     const response = await reposService.getResposByUserName(username);
-    dispatch({
-      type: REPOS_SUCCESS,
-      repos: response.data
-    });
+    const repos = response.data;
+    const isReposEmpty = repos.length === 0;
+    if (isReposEmpty) dispatch({ type: REPOS_EMPTY });
+    else
+      dispatch({
+        type: REPOS_SUCCESS,
+        repos: response.data
+      });
   } catch (error) {
-    if (error.response && error.response.status === 404)
-      dispatch({ type: REPOS_NOT_FOUND });
+    const isError404 = error.response && error.response.status === 404;
+    if (isError404) dispatch({ type: REPOS_NOT_FOUND });
     else dispatch({ type: REPOS_ERROR });
   }
 };

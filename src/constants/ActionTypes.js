@@ -1,0 +1,5 @@
+export const REPOS_REQUEST = "REPOS_REQUEST";
+export const REPOS_SUCCESS = "REPOS_SUCCESS";
+export const REPOS_ERROR = "REPOS_ERROR";
+export const REPOS_NOT_FOUND = "REPOS_NOT_FOUND";
+export const REPOS_EMPTY = "REPOS_EMPTY";
