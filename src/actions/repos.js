@@ -7,7 +7,7 @@ import {
   REPOS_ERROR
 } from "../constants/ActionTypes";
 
-const getReposByUsername = async (dispatch, reposService, username) => {
+export const getReposByUsername = async (dispatch, reposService, username) => {
   //Set the applications to a "Loading" state
   dispatch({ type: REPOS_REQUEST });
 
