@@ -19,7 +19,7 @@ export const getReposByUsername = async (dispatch, reposService, username) => {
     else
       dispatch({
         type: REPOS_SUCCESS,
-        repos: response.data
+        repos
       });
   } catch (error) {
     const isError404 = error.response && error.response.status === 404;
