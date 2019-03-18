@@ -28,10 +28,15 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .search-form div {
   flex: 1;
+}
+
+.search-form > div {
+  min-width: 300px;
 }
 
 .search-form h3 {
@@ -100,6 +105,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   margin-left: -5px;
+  max-width: calc(100% + 5px);
 }
 
 .repo-card {

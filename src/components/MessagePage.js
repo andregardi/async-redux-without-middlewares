@@ -54,6 +54,8 @@ const MessagePage = ({ status }) => {
       <img src={imageUrl} alt={altText} />
       <h2>{title}</h2>
       <h3>{text}</h3>
+      {/* Preloads the spinner GIF for a better UX */}
+      <link rel="preload" href={spinnerImg} as="image"></link>
     </div>
   );
 };
