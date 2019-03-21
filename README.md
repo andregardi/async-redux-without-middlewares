@@ -59,8 +59,7 @@ In react, containers are components that connects to the redux state. For didact
 The second parameter of connect() is a function called mapDispatchToProps, which lets you create functions that dispatch when called, and pass the resulting object properties as props to your component.
 
 If you want to learn more about actions dispatching, I really recommend reading this page from the redux documentation.
-[**Connect: Dispatching Actions with mapDispatchToProps - React Redux**
-*As the second argument passed in to connect, mapDispatchToProps is used for dispatching actions to the store. dispatchÔÇª*react-redux.js.org](https://react-redux.js.org/using-react-redux/connect-mapdispatch)
+[**Connect: Dispatching Actions with mapDispatchToProps - React Redux**](https://react-redux.js.org/using-react-redux/connect-mapdispatch)
 
 After connecting it all, the flow look like this:
 
