@@ -6,7 +6,7 @@ import {
   REPOS_ERROR
 } from "../constants/ActionTypes";
 
-describe("legalOpinion repos action", () => {
+describe("repos action", () => {
   const username = "user";
   const mockDispatch = jest.fn();
   const mockService = {};

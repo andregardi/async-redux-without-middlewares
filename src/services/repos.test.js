@@ -1,6 +1,6 @@
 import { reposServiceFunction } from "./repos";
 
-describe("legalOpinion repos service", () => {
+describe("repos reducer", () => {
   const mockAxios = {
     get: jest.fn()
   };
