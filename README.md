@@ -7,7 +7,7 @@ It is possible to handle asynchronous redux actions without middlewares and, wit
 
 ### Should I do it?
 
-I am not here to say that you shouldnÔÇÖt use thunk or saga. If you prefer, you can think of it as an exercise to help us to deepen our knowledge of redux and functional programming. Also,  we are going to do it all in a testable way.
+I am not here to say that you shouldn't use thunk or saga. If you prefer, you can think of it as an exercise to help us to deepen our knowledge of redux and functional programming. Also,  we are going to do it all in a testable way.
 
 ### The project
 
